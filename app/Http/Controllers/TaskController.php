@@ -37,6 +37,15 @@ class TaskController extends Controller
 
         return response()->json(['message' => 'Task deleted successfully']);
     }
+    public function details($id)
+    {
+        $task = Task::findOrFail($id);
+        $status = 400;
+        if(isset($task)){
+            $status = 200;
+        }
+        return response()->json($task, $status);
 
+    }
     
 }
